@@ -27,7 +27,7 @@ agent {
         PROJECT_NAME = "sonarqube-pipeline"
       }
       steps {
-        withSonarQubeEnv('SonarQube') {
+        withSonarQubeEnv('sonarqube') {
             sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
             -Dsonar.projectKey=$PROJECT_NAME \
             -Dsonar.sources=.'''
