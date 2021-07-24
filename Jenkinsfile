@@ -23,11 +23,11 @@ agent {
     stage('SonarQube Analysis') {
       environment {
         SCANNER_HOME = tool 'sonarqube-4.6.2'
-        ORGANIZATION = "sonarqube-pipeline"
-        PROJECT_NAME = "sonarqube-pipeline"
+        ORGANIZATION = "nexus-pipeline-2021"
+        PROJECT_NAME = "nexus-pipeline-2021"
       }
       steps {
-        withSonarQubeEnv('sonarqube') {
+        withSonarQubeEnv('sonarnexus') {
             sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
             -Dsonar.projectKey=$PROJECT_NAME \
             -Dsonar.sources=.'''
@@ -86,8 +86,8 @@ agent {
 
 def notifyBuild(String buildStatus = 'STARTED', String colorCode = '#5492f7', String notify = '') {
 
-  def project = 'demo-tech-start-2'
-  def channel = "@manoj.k"
+  def project = 'slack'
+  def channel = "@prabhu.p"
   def base = "https://github.com/devaprabhu1995/demo-tech-start-2.git/${project}/commits/"
 
   def commit = sh(returnStdout: true, script: 'git log -n 1 --format="%H"').trim()
