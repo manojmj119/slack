@@ -23,8 +23,8 @@ agent {
     stage('SonarQube Analysis') {
       environment {
         SCANNER_HOME = tool 'sonarqube-4.6.2'
-        ORGANIZATION = "sonarqube"
-        PROJECT_NAME = "sonarqube"
+        ORGANIZATION = "sonarqube-pipeline"
+        PROJECT_NAME = "sonarqube-pipeline"
       }
       steps {
         withSonarQubeEnv('SonarQube') {
@@ -86,7 +86,7 @@ agent {
 
 def notifyBuild(String buildStatus = 'STARTED', String colorCode = '#5492f7', String notify = '') {
 
-  def project = 'sonarqube'
+  def project = 'sonarqube-pipeline'
   def channel = "@monaj.k"
   def base = "https://github.com/devaprabhu1995/demo-tech-start-2.git${project}/commits/"
 
