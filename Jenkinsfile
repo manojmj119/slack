@@ -98,7 +98,7 @@ def notifyBuild(String buildStatus = 'STARTED', String colorCode = '#5492f7', St
 
   def summary = "${buildStatus}: Job <${env.RUN_DISPLAY_URL}|${env.JOB_NAME} [${env.BUILD_NUMBER}]>\n${subject} ${notify}"
 
-  slackSend (channel: "#${channel}", color: colorCode, message: summary)
+  slackSend (channel: "${channel}", color: colorCode, message: summary)
 
 }
 
