@@ -22,9 +22,9 @@ agent {
         
     stage('SonarQube Analysis') {
       environment {
-        SCANNER_HOME = tool 'SonarQube-4.6.2'
-        ORGANIZATION = "demo1_maven_pipeline"
-        PROJECT_NAME = "demo1_maven_pipeline"
+        SCANNER_HOME = tool 'sonarqube-4.6.2'
+        ORGANIZATION = "sonarqube"
+        PROJECT_NAME = "sonarqube"
       }
       steps {
         withSonarQubeEnv('SonarQube') {
@@ -86,9 +86,9 @@ agent {
 
 def notifyBuild(String buildStatus = 'STARTED', String colorCode = '#5492f7', String notify = '') {
 
-  def project = 'webapp'
-  def channel = "#clops-jivox-promethean-qa-alerts"
-  def base = "https://github.com/anuwardeen-clops/${project}/commits/"
+  def project = 'sonarqube'
+  def channel = "@monaj.k"
+  def base = "https://github.com/devaprabhu1995/demo-tech-start-2.git${project}/commits/"
 
   def commit = sh(returnStdout: true, script: 'git log -n 1 --format="%H"').trim()
   def link = "${base}${commit}"
