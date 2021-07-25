@@ -22,12 +22,12 @@ agent {
         
     stage('SonarQube Analysis') {
       environment {
-        SCANNER_HOME = tool 'sonarqube-4.6.2'
-        ORGANIZATION = "nexus-pipeline-2021"
-        PROJECT_NAME = "nexus-pipeline-2021"
+        SCANNER_HOME = tool 'sonarqube'
+        ORGANIZATION = "pipeline-1"
+        PROJECT_NAME = "pipeline-1"
       }
       steps {
-        withSonarQubeEnv('sonarnexus') {
+        withSonarQubeEnv('sonarqube') {
             sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
             -Dsonar.projectKey=$PROJECT_NAME \
             -Dsonar.sources=.'''
